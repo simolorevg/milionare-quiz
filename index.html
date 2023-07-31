@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="logo-section">
+                <div v-if="!endGame">
+                    <h1>Mine Quiz</h1>
+                    <p>Punteggio: {{points}}</p>
+                </div>
+                <div v-else>
+                    <h2>PARTITA TERMINATA, PUNTEGGIO FINALE: {{points}}.</h2>
+                </div>
+            </div>
+            <div class="question-section">
+                <div v-if="!endGame" class="question-container">
+                    <div>
+                        <div class="question-box">
+                            {{currentQuestion.question}}
+                        </div>
+                        <div class="answer-container" v-for="(item, index) in currentQuestion.answers" :key="index">
+                            <div :id="index" class="answer-box" @click="checkAnswers(item.value, index)">
+                                {{item.sentence}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-else>
+                    <h2>RICARICA LA PAGINA</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
