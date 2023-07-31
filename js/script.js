@@ -134,6 +134,9 @@ createApp({
         playSound(url) {
             const audio = new Audio(url);
             audio.play();
+        },
+        refreshPage() {
+            window.location.reload();
         }
     }
 }).mount('#app');

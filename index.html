@@ -13,8 +13,7 @@
         <div class="container">
             <div class="logo-section">
                 <div v-if="!endGame">
-                    <h1>Mine Quiz</h1>
-                    <p>Punteggio: {{points}}</p>
+                    <h1>ErediBool</h1>
                 </div>
                 <div v-else>
                     <h2>PARTITA TERMINATA, PUNTEGGIO FINALE: {{points}}.</h2>
@@ -26,15 +25,18 @@
                         <div class="question-box">
                             {{currentQuestion.question}}
                         </div>
-                        <div class="answer-container" v-for="(item, index) in currentQuestion.answers" :key="index">
-                            <div :id="index" class="answer-box" @click="checkAnswers(item.value, index)">
-                                {{item.sentence}}
+                        <div class="grid-answer">
+                            <div class="answer-container" v-for="(item, index) in currentQuestion.answers" :key="index">
+                                <div :id="index" class="answer-box" @click="checkAnswers(item.value, index)">
+                                    {{item.sentence}}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div v-else>
                     <h2>RICARICA LA PAGINA</h2>
+                    <button class="reload-btn" @click="refreshPage()">Ricarica</button>
                 </div>
             </div>
         </div>

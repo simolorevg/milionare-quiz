@@ -27,7 +27,7 @@ h1 {
 /*PARTS*/
 .logo-section {
     height: 40vh;
-    background-color: #274690;
+    background-color: #e02500;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,7 +35,7 @@ h1 {
 
 .question-section {
     flex-grow: 1;
-    background-color: #1B264F;
+    background-color: #f35900;
     display: flex;
     justify-content: center;
     align-items: start;
@@ -73,12 +73,23 @@ h1 {
     color: black;
 }
 
-.answer-container {
-    margin-top: 20px;
-    width: 60%;
+.grid-answer {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    padding: 20px;
+    gap: 10px;
+}
+
+.answer-container {
+    margin-top: 20px;
+}
+
+.reload-btn {
+    width: 5em;
+    padding: 10px;
+    background-color: red;
+    border: none;
+    cursor: pointer;
 }
 
 /*ANSWER BOX STYLES*/
@@ -94,13 +105,13 @@ h1 {
 }
 
 .wrong {
-    background-color: red;
+    background-color: yellow;
 }
 
 /*MEDIA SCREEN*/
 
 @media screen and (max-width: 600px) {
-    .answer-container {
+    .grid-answer {
         grid-template-columns: 1fr;
         gap: 20px;
     }
