@@ -109,16 +109,18 @@ createApp({
             box.classList.remove('choice');
             if (answer) {
                 this.points = this.points + 1;
-                this.playSound('sounds/rispostacorretta.mp3');
+                this.playSound('sounds/rispostaesattaconti.mp3');
                 box.classList.add('correct');
+                setTimeout(() => this.nextQuestion(index), 3200);
             } else {
                 if (this.points > 0) {
                     this.points = this.points - 1;
                 }
-                this.playSound('sounds/rispostasbagliata.mp3');
+                this.playSound('sounds/rispostasbagliataconti.mp3');
                 box.classList.add('wrong');
+                setTimeout(() => this.nextQuestion(index), 2500);
             };
-            setTimeout(() => this.nextQuestion(index), 1000);
+
         },
         nextQuestion(item) {
             let box = document.getElementById(item);
