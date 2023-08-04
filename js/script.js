@@ -4,6 +4,8 @@ createApp({
         return {
             questionIndex: 0,
             points: 0,
+            errors: 0,
+            loseGame: false,
             currentQuestion: {},
             questions: [
                 {
@@ -89,6 +91,69 @@ createApp({
                             value: false
                         }
                     ]
+                },
+                {
+                    question: 'Dove è nato Cristoforo Colombo?',
+                    answers: [
+                        {
+                            sentence: 'Carrara',
+                            value: false
+                        },
+                        {
+                            sentence: 'Pontremoli',
+                            value: false
+                        },
+                        {
+                            sentence: 'Genova',
+                            value: true
+                        },
+                        {
+                            sentence: 'La Spezia',
+                            value: false
+                        }
+                    ]
+                },
+                {
+                    question: 'Quante sono le isole Eolie?',
+                    answers: [
+                        {
+                            sentence: '8',
+                            value: false
+                        },
+                        {
+                            sentence: '6',
+                            value: false
+                        },
+                        {
+                            sentence: '9',
+                            value: false
+                        },
+                        {
+                            sentence: '7',
+                            value: true
+                        }
+                    ]
+                },
+                {
+                    question: 'Quanti canti ci sono nella Divina Commedia?',
+                    answers: [
+                        {
+                            sentence: '150',
+                            value: false
+                        },
+                        {
+                            sentence: '99',
+                            value: false
+                        },
+                        {
+                            sentence: '100',
+                            value: true
+                        },
+                        {
+                            sentence: '120',
+                            value: false
+                        }
+                    ]
                 }
             ],
             endGame: false
@@ -108,17 +173,20 @@ createApp({
             let box = document.getElementById(index);
             box.classList.remove('choice');
             if (answer) {
-                this.points = this.points + 1;
+                this.points = this.points + 500;
                 this.playSound('sounds/rispostaesattaconti.mp3');
                 box.classList.add('correct');
                 setTimeout(() => this.nextQuestion(index), 3200);
             } else {
-                if (this.points > 0) {
-                    this.points = this.points - 1;
-                }
+                this.errors = this.errors + 1;
                 this.playSound('sounds/rispostasbagliataconti.mp3');
                 box.classList.add('wrong');
-                setTimeout(() => this.nextQuestion(index), 2500);
+                if (this.errors <= 1) {
+                    setTimeout(() => this.nextQuestion(index), 2500);
+                } else {
+                    this.endGame = true;
+                    this.loseGame = true;
+                }
             };
 
         },

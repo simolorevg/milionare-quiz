@@ -12,15 +12,20 @@
     <div id="app">
         <div class="container">
             <div class="logo-section">
-                <div v-if="!endGame">
+                <div v-if="!endGame || !loseGame">
                     <h1>ErediBool</h1>
                 </div>
                 <div v-else>
-                    <h2>PARTITA TERMINATA, PUNTEGGIO FINALE: {{points}}.</h2>
+                    <div v-if="endGame">
+                        <h2>PARTITA TERMINATA, MONTEPREMI FINALE: {{points}} &euro;.</h2>
+                        <div v-if="loseGame">
+                            <h3> HAI RAGGIUNTO IL NUMERO MASSIMO DI ERRORI.</h3>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="question-section">
-                <div v-if="!endGame" class="question-container">
+                <div v-if="!endGame || !loseGame" class="question-container">
                     <div>
                         <div class="question-box">
                             {{currentQuestion.question}}
@@ -33,6 +38,7 @@
                             </div>
                         </div>
                     </div>
+                    <h2>ERRORI: {{errors}}</h2>
                 </div>
                 <div v-else>
                     <button class="reload-btn" @click="refreshPage()">Ricarica</button>
