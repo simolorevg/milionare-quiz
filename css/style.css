@@ -15,6 +15,11 @@ h1 {
     font-size: 5em;
 }
 
+img {
+    width: 200px;
+    height: 200px;
+}
+
 /*COMMON SECTION*/
 .container {
     width: 100%;
@@ -26,7 +31,7 @@ h1 {
 /*PARTS*/
 .logo-section {
     height: 40vh;
-    background-color: #e02500;
+    background-color: #0400e0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,7 +39,7 @@ h1 {
 
 .question-section {
     flex-grow: 1;
-    background-color: #f38200;
+    background-color: #0041f3;
     display: flex;
     justify-content: center;
     align-items: start;

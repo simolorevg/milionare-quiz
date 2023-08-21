@@ -13,13 +13,13 @@
         <div class="container">
             <div class="logo-section">
                 <div v-if="!endGame || !loseGame">
-                    <h1>ErediBool</h1>
+                    <img src="img/logo.png" alt="LOGO">
                 </div>
                 <div v-else>
                     <div v-if="endGame">
                         <h2>PARTITA TERMINATA, MONTEPREMI FINALE: {{points}} &euro;.</h2>
                         <div v-if="loseGame">
-                            <h3> HAI RAGGIUNTO IL NUMERO MASSIMO DI ERRORI.</h3>
+                            <h3>Ricarica la pagina per rigiocare.</h3>
                         </div>
                     </div>
                 </div>
@@ -38,7 +38,6 @@
                             </div>
                         </div>
                     </div>
-                    <h2>ERRORI: {{errors}}</h2>
                 </div>
                 <div v-else>
                     <button class="reload-btn" @click="refreshPage()">Ricarica</button>

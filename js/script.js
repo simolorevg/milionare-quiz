@@ -27,7 +27,8 @@ createApp({
                             sentence: '1891',
                             value: false
                         }
-                    ]
+                    ],
+                    questionMoney: 500
                 },
                 {
                     question: 'Quale band cantò Let It Be?',
@@ -48,7 +49,8 @@ createApp({
                             sentence: 'Pooh',
                             value: false
                         }
-                    ]
+                    ],
+                    questionMoney: 1000
                 },
                 {
                     question: 'Qual è lo stato più piccolo del mondo?',
@@ -69,7 +71,8 @@ createApp({
                             sentence: 'Liechtenstein',
                             value: false
                         }
-                    ]
+                    ],
+                    questionMoney: 2000
                 },
                 {
                     question: 'Qual è il fiume più lungo del mondo?',
@@ -111,7 +114,8 @@ createApp({
                             sentence: 'La Spezia',
                             value: false
                         }
-                    ]
+                    ],
+                    questionMoney: 3000
                 },
                 {
                     question: 'Quante sono le isole Eolie?',
@@ -132,7 +136,8 @@ createApp({
                             sentence: '7',
                             value: true
                         }
-                    ]
+                    ],
+                    questionMoney: 4000
                 },
                 {
                     question: 'Quanti canti ci sono nella Divina Commedia?',
@@ -153,7 +158,8 @@ createApp({
                             sentence: '120',
                             value: false
                         }
-                    ]
+                    ],
+                    questionMoney: 5000
                 }
             ],
             endGame: false
@@ -173,22 +179,20 @@ createApp({
             let box = document.getElementById(index);
             box.classList.remove('choice');
             if (answer) {
-                this.points = this.points + 500;
-                this.playSound('sounds/rispostaesattaconti.mp3');
+                this.playSound('sounds/rispostacorretta.mp3');
                 box.classList.add('correct');
-                setTimeout(() => this.nextQuestion(index), 3200);
+                this.points = this.currentQuestion.questionMoney;
+                setTimeout(() => this.nextQuestion(index), 1500);
             } else {
-                this.errors = this.errors + 1;
-                this.playSound('sounds/rispostasbagliataconti.mp3');
+                this.playSound('sounds/rispostasbagliata.mp3');
                 box.classList.add('wrong');
-                if (this.errors <= 1) {
-                    setTimeout(() => this.nextQuestion(index), 2500);
-                } else {
-                    this.endGame = true;
-                    this.loseGame = true;
-                }
+                setTimeout(() => this.stopTheGame(), 500);
             };
 
+        },
+        stopTheGame() {
+            this.endGame = true;
+            this.loseGame = true;
         },
         nextQuestion(item) {
             let box = document.getElementById(item);
